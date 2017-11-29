@@ -25,6 +25,9 @@ before_install:
       export PATH="/tmp/git-lfs:$PATH"
     fi
 
+before_script:
+  - git lfs pull
+
 script:
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
