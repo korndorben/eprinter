@@ -1,60 +1,55 @@
 {
-	"name": "etaobs",
-	"productName":"易淘商家管理后台",
-	"version": "1.0.0",
-	"main": "main.js",
-	"description": "易淘商家管理后台",
-	"scripts": {
-		"start": "electron .",
-		"pack": "electron-builder -w --x64",
-		"dist": "electron-builder",
-		"postinstall": "electron-builder install-app-deps"
-	},
-	"build": {
-		"productName": "易淘商家管理后台",
-		"appId": "cn.etao.b.nbw",
-		"directories": {
-			"output": "build"
-		},
-		"publish": ["github"],
-		"files": [
-			"./**/*"
-		],
-		"dmg": {
-			"contents": [
-				{
-					"x": 410,
-					"y": 150,
-					"type": "link",
-					"path": "/Applications"
-				},
-				{
-					"x": 130,
-					"y": 150,
-					"type": "file"
-				}
-			]
-		},
-		"mac": {
-			"icon": "build/icons/icon.icns"
-		},
-		"win": {
-			"icon": "build/icons/icon.ico"
-		},
-		"linux": {
-			"icon": "build/icons"
-		}
-	},
-	"repository": "https://github.com/electron/electron-quick-start",
-	"author": "api.list@etao.cn",
-	"devDependencies": {
-		"electron": "~1.7.8",
-		"electron-builder": "^19.46.9",
-	},
-	"dependencies": {
-		"axios": "^0.17.1",
-		"iconv-lite": "^0.4.19",
-		"moment": "^2.19.2",
-		"portscanner": "^2.1.1"
-	}
+  "name": "electron-boilerplate",
+  "productName": "Electron Boilerplate",
+  "description": "Starter for your Electron application",
+  "version": "0.0.0",
+  "private": true,
+  "author": "Mr. Gumby <mr.gumby@example.com>",
+  "copyright": "© 2017, Gumby inc.",
+  "homepage": "http://example.com",
+  "main": "app/background.js",
+  "build": {
+    "appId": "com.example.electron-boilerplate",
+    "files": [
+      "app/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "resources"
+    },
+    "publish": null
+  },
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "preunit": "webpack --config=build/webpack.unit.config.js --env=test --display=none",
+    "unit": "electron-mocha temp/specs.js --renderer --require source-map-support/register",
+    "pree2e": "webpack --config=build/webpack.app.config.js --env=test --display=none && webpack --config=build/webpack.e2e.config.js --env=test --display=none",
+    "e2e": "mocha temp/e2e.js --require source-map-support/register",
+    "test": "npm run unit && npm run e2e",
+    "start": "node build/start.js",
+    "release": "npm test && webpack --config=build/webpack.app.config.js --env=production && electron-builder"
+  },
+  "dependencies": {
+    "fs-jetpack": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.5",
+    "@babel/preset-env": "^7.0.0-beta.5",
+    "babel-loader": "^8.0.0-beta.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "chai": "^4.1.0",
+    "css-loader": "^0.28.7",
+    "electron": "1.7.9",
+    "electron-builder": "^19.43.3",
+    "electron-mocha": "^4.0.0",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "mocha": "^4.0.1",
+    "source-map-support": "^0.5.0",
+    "spectron": "^3.7.2",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1",
+    "webpack-merge": "^4.1.0",
+    "webpack-node-externals": "^1.6.0"
+  }
 }
