@@ -6,7 +6,7 @@
 	"description": "易淘商家管理后台",
 	"scripts": {
 		"start": "electron .",
-		"pack": "electron-builder -w",
+		"pack": "electron-builder -w --x64",
 		"dist": "electron-builder",
 		"postinstall": "electron-builder install-app-deps"
 	},
