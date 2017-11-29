@@ -16,6 +16,7 @@
 		"directories": {
 			"output": "build"
 		},
+		"publish": ["github"],
 		"files": [
 			"./**/*"
 		],
